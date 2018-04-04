@@ -43,6 +43,9 @@ public class Board {
 				chessBoard[i][j] = new EmptyTile();
 			}
 		}
+		
+		chessBoard[1][0].getPiece().calcMoves(this);
+		
 	}
 	public Tile getTile(int row, int col) {
 		return chessBoard[row][col];

@@ -29,20 +29,28 @@ public class Pawn extends Piece
 			direction = -1;
 		}
 		
-		if(b.getTile(yPos+direction, xPos).isOpen())
+		if(yPos+direction <= 7 && yPos+direction >= 0)
 		{
-			
+			if(b.getTile(yPos+direction, xPos).isOpen())//check tile directly in front of pawn
+			{
+				moves.add(new Pair(xPos, yPos+direction));
+			}
+			if(xPos+1 <= 7 && !b.getTile(yPos+direction, xPos+1).isOpen() && 
+					(b.getTile(yPos+direction, xPos+1).getPiece().getColor() != this.c))//check tile to the right of the pawn relative to the board
+			{
+				moves.add(new Pair(xPos+1, yPos+direction));
+			}
+			if(xPos-1 >= 0 && !b.getTile(yPos+direction, xPos-1).isOpen() && 
+					(b.getTile(yPos+direction, xPos-1).getPiece().getColor() != this.c))//check tile to the left of the pawn relative to the board 
+			{
+				moves.add(new Pair(xPos-1, yPos+direction));
+			}
+			if ((yPos == 1 && this.c == Alliance.BLACK) || (yPos == 6 && this.c == Alliance.WHITE) && 
+					b.getTile(yPos+direction, xPos).isOpen() && b.getTile(yPos+2*direction, xPos).isOpen())
+			{
+				moves.add(new Pair(xPos, yPos+2*direction));
+			}
 		}
-		if(!b.getTile(yPos+direction, xPos+1).isOpen())
-		{
-			
-		}
-		if(!b.getTile(yPos+direction, xPos-1).isOpen()) {
-			
-		}
-		 if (yPos == )
-		{
-			
-		}
+		
 	}
 }

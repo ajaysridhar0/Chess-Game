@@ -1,5 +1,6 @@
 package pieces;
 import Game.Alliance;
+import Game.Board;
 
 public class King extends Piece
 {
@@ -15,5 +16,11 @@ public class King extends Piece
 		} else {
 			return "k";
 		}
+	}
+
+	@Override
+	public void calcMoves(Board b) {
+		// TODO Auto-generated method stub
+		
 	}
 }
