@@ -45,11 +45,16 @@ public class Board {
 		}
 		
 		chessBoard[1][0].getPiece().calcMoves(this);
-		
 	}
+	
 	public Tile getTile(int row, int col) {
 		return chessBoard[row][col];
 	}
+	
+	public boolean isOpen(int row, int col) {
+		return chessBoard[row][col].isOpen();
+	}
+	
 	public void printBoard()
 	{
 		for(int row = 0; row < chessBoard.length; row++)

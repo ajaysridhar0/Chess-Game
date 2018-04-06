@@ -4,8 +4,8 @@ import Game.Board;
 
 public class Queen extends Piece
 {
-	public Queen(Alliance c, int xPos, int yPos) {
-		super(c, xPos, yPos);
+	public Queen(Alliance c, int row, int col) {
+		super(c, row, col);
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -4,8 +4,8 @@ import Game.Board;
 
 public class Knight extends Piece
 {
-	public Knight(Alliance c, int xPos, int yPos) {
-		super(c, xPos, yPos);
+	public Knight(Alliance c, int row, int col) {
+		super(c, row, col);
 		// TODO Auto-generated constructor stub
 	}
 	@Override

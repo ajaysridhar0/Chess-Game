@@ -4,8 +4,8 @@ import Game.Board;
 
 public class Rook extends Piece
 {
-	public Rook(Alliance c, int xPos, int yPos) {
-		super(c, xPos, yPos);
+	public Rook(Alliance c, int row, int col) {
+		super(c, row, col);
 		// TODO Auto-generated constructor stub
 	}
 	

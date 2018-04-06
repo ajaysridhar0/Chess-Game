@@ -7,15 +7,15 @@ import Game.Pair;
 
 public abstract class Piece {
 	
-	protected int xPos;
-	protected int yPos;
+	protected int col;
+	protected int row;
 	protected Alliance c;
 	ArrayList<Pair> moves = new ArrayList<Pair>();
-	public Piece(Alliance c, int xPos, int yPos)
+	public Piece(Alliance c, int row, int col)
 	{
 		this.c  = c;
-		this.xPos = xPos;
-		this.yPos = yPos;
+		this.col = col;
+		this.row = row;
 	}
 	public abstract void calcMoves(Board b);
 	public Alliance getColor()

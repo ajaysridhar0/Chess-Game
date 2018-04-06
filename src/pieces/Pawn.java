@@ -5,8 +5,8 @@ import Game.Pair;
 
 public class Pawn extends Piece
 {
-	public Pawn(Alliance c, int xPos, int yPos) {
-		super(c, xPos, yPos);
+	public Pawn(Alliance c, int row, int col) {
+		super(c, row, col);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -21,6 +21,7 @@ public class Pawn extends Piece
 	
 	public void calcMoves(Board b)
 	{
+		//determine which direction the pawn is moving
 		int direction;
 		if (this.c == Alliance.BLACK)
 		{
@@ -29,26 +30,33 @@ public class Pawn extends Piece
 			direction = -1;
 		}
 		
-		if(yPos+direction <= 7 && yPos+direction >= 0)
+		if(row+direction <= 7 && row+direction >= 0)
 		{
-			if(b.getTile(yPos+direction, xPos).isOpen())//check tile directly in front of pawn
+			//check tile directly in front of pawn
+			if(b.getTile(row+direction, col).isOpen())
 			{
-				moves.add(new Pair(xPos, yPos+direction));
+				moves.add(new Pair(col, row+direction));
 			}
-			if(xPos+1 <= 7 && !b.getTile(yPos+direction, xPos+1).isOpen() && 
-					(b.getTile(yPos+direction, xPos+1).getPiece().getColor() != this.c))//check tile to the right of the pawn relative to the board
+			
+			//check tile to the right of the pawn relative to the board
+			if(col+1 <= 7 && !b.isOpen(row+direction, col+1) && 
+					(b.getTile(row+direction, col+1).getPiece().getColor() != this.c))
 			{
-				moves.add(new Pair(xPos+1, yPos+direction));
+				moves.add(new Pair(col+1, row+direction));
 			}
-			if(xPos-1 >= 0 && !b.getTile(yPos+direction, xPos-1).isOpen() && 
-					(b.getTile(yPos+direction, xPos-1).getPiece().getColor() != this.c))//check tile to the left of the pawn relative to the board 
+			
+			//check tile to the left of the pawn relative to the board
+			if(col-1 >= 0 && !b.isOpen(row+direction, col-1) && 
+				(b.getTile(row+direction, col-1).getPiece().getColor() != this.c))  	
 			{
-				moves.add(new Pair(xPos-1, yPos+direction));
+				moves.add(new Pair(col-1, row+direction));
 			}
-			if ((yPos == 1 && this.c == Alliance.BLACK) || (yPos == 6 && this.c == Alliance.WHITE) && 
-					b.getTile(yPos+direction, xPos).isOpen() && b.getTile(yPos+2*direction, xPos).isOpen())
+			
+			//check if pawn is in starting position and can move two spaces forward
+			if ((row == 1 && this.c == Alliance.BLACK) || (row == 6 && this.c == Alliance.WHITE) && 
+				b.isOpen(row+direction, col) && b.isOpen(row+2*direction, col))
 			{
-				moves.add(new Pair(xPos, yPos+2*direction));
+				moves.add(new Pair(col, row+2*direction));
 			}
 		}
 		
