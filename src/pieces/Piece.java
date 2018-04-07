@@ -18,6 +18,10 @@ public abstract class Piece {
 		this.row = row;
 	}
 	public abstract void calcMoves(Board b);
+	public ArrayList<Pair> getMoves()
+	{
+		return moves;
+	}
 	public Alliance getColor()
 	{
 		return c;

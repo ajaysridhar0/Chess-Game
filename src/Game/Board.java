@@ -43,8 +43,12 @@ public class Board {
 				chessBoard[i][j] = new EmptyTile();
 			}
 		}
+		chessBoard[4][4] = new OccupiedTile(new Knight(Alliance.WHITE, 4, 4));
 		
-		chessBoard[1][0].getPiece().calcMoves(this);
+		//printBoard();
+		
+		chessBoard[4][4].getPiece().calcMoves(this);
+		System.out.println(chessBoard[4][4].getPiece().getMoves());
 	}
 	
 	public Tile getTile(int row, int col) {
@@ -55,15 +59,29 @@ public class Board {
 		return chessBoard[row][col].isOpen();
 	}
 	
+	public void updateMoves() {
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				if(!chessBoard[i][j].isOpen())
+					chessBoard[i][j].getPiece().calcMoves(this);
+			}
+		}
+	}
+	
 	public void printBoard()
 	{
+		int xaxis = 8;
 		for(int row = 0; row < chessBoard.length; row++)
 		{
+			System.out.print(xaxis - row);
 			for(int col = 0; col < chessBoard[0].length; col++) 
 			{	
 				System.out.print("|" + chessBoard[row][col]);
 			}
 			System.out.println("|");
 		}
+		System.out.print("  a b c d e f g h");
 	}
 }
