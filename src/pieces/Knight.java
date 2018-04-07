@@ -53,35 +53,34 @@ public class Knight extends Piece
 			
 			//BUG : DOESN'T CALCULATE RIGHT MOVES
 			int current_col = 0;
-			int current_row = 0;
 			if(xdir != 0)
 			{
 				current_col = col + 2*xdir;
 				if (row - 1 >= 0 && current_col >=0 && current_col < 8) {
 					if(b.isOpen(row - 1, current_col))
 					{
-						moves.add(new Pair(current_row, current_col));
+						moves.add(new Pair(row - 1, current_col));
 					}
-					else if( b.getTile(current_row, current_col).getPiece().getColor() != this.c)
+					else if( b.getTile(row - 1, current_col).getPiece().getColor() != this.c)
 					{
-						moves.add(new Pair(current_row, current_col));
+						moves.add(new Pair(row - 1, current_col));
 					}
 				}
 				
 				if (row + 1 < 8 && current_col >=0 && current_col < 8) {
 					if(b.isOpen(row + 1, current_col))
 					{
-						moves.add(new Pair(current_row, current_col));
+						moves.add(new Pair(row + 1, current_col));
 					}
-					else if( b.getTile(current_row, current_col).getPiece().getColor() != this.c)
+					else if( b.getTile(row - 1, current_col).getPiece().getColor() != this.c)
 					{
-						moves.add(new Pair(current_row, current_col));
+						moves.add(new Pair(row + 1, current_col));
 					}
 				}
 			}
 			else
 			{
-				current_row = row + 2*ydir;
+				int current_row = row + 2*ydir;
 				if (col - 1 >= 0 && current_row >=0 && current_row < 8) {
 					if(b.isOpen(current_row, col - 1))
 					{
